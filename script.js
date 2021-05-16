@@ -1,155 +1,129 @@
-const validarCpf = (cpf) => {
+const validatecpf = (cpf) => {
     if (cpf.length != 11) return false;
-    else {
-        var numeros = cpf.substring(0, 9)
-        var digitos = cpf.substring(9)
-        var soma = 0;
-        for (var i = 10; i > 1; i--) {
-            soma += numeros.charAt(10 - i) * i;
-        }
 
-        var resultado = (soma % 11) < 2 ? 0 : 11 - (soma % 11);
-
-        if (resultado != digitos.charAt(0)) {
-            return false;
-        }
-
-        var soma = 0;
-
-        numeros = cpf.substring(0, 10);
-
-        for (var k = 11; k > 1; k--) {
-            soma += numeros.charAt(11 - k) * k;
-        }
-
-        resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-
-        if (resultado != digitos.charAt(1)) {
-            return false;
-        } else return true;
+    let numbers = cpf.substring(0, 9)
+    let entry = cpf.substring(9)
+    let sum = 0;
+    for (let i = 10; i > 1; i--) {
+        sum += numbers.charAt(10 - i) * i;
     }
+
+    var result = (sum % 11) < 2 ? 0 : 11 - (sum % 11);
+
+    if (result != entry.charAt(0)) {
+        return false;
+    }
+    sum = 0;
+    numbers = cpf.substring(0, 10);
+
+    for (let k = 11; k > 1; k--) {
+        sum += numbers.charAt(11 - k) * k;
+    }
+    result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+
+    return result != entry.charAt(1) ? false : true
 }
-function validacao() {
+
+function validate() {
 
 
-    var cpf = document.getElementById("cpf").value.replace(/[^a-z0-9 ]/g, "")
-    var validInputs = document.querySelectorAll(".required")
-    var resultadoValidacao = validarCpf(cpf)
+    const cpf = document.getElementById("cpf").value.replace(/[^a-z0-9 ]/g, "")
+    const validInputs = document.querySelectorAll(".required")
+    let inputIsValid = validatecpf(cpf)
+    const cpfIsValid = validatecpf(cpf)
+
     for (i = 0; i < validInputs.length; i++) {
-        if (validInputs[i].value === undefined || validInputs[i].value === "") validInputs[i].style["border"] = "1px solid red"
+        if (validInputs[i].value === "") validInputs[i].style["border"] = "1px solid red"
     }
     for (i = 0; i < validInputs.length; i++) {
-        if (validInputs[i].value === undefined || validInputs[i].value === "") {
-            resultadoValidacao = false;
-            break
-        } else {
-            resultadoValidacao = true
+        if (validInputs[i].value === "") inputIsValid = false;
+        else {
+            inputIsValid = true
             validInputs[1].style["border"] = "none"
-            validInputs[i].style["border"] = "none"
             document.querySelector("span").style["display"] = "none"
-
+            validInputs[i].style["border"] = "none"
         }
     }
 
-    if (resultadoValidacao && validarCpf(cpf)) {
-
-        window.alert("Parabéns!! você foi cadastrado com sucesso");
-
-        return true
-    } else if (!validarCpf(cpf)) {
+    if (!inputIsValid || !cpfIsValid) {
         window.alert("Opss! Aconteceu um erro no seu cadastro, verifique se você preencheu todos espaços necessários")
-        validInputs[1].style["border"] = "1px solid red"
-        document.querySelector("span").style["display"] = "inline"
+        cpfIsValid ? (
+            validInputs[1].style["border"] = "none",
+            document.querySelector("span").style["display"] = "none"
+        ) : (
+            validInputs[1].style["border"] = "1px solid red",
+            document.querySelector("span").style["display"] = "inline"
+        );
         return false
     }
-    else {
-        window.alert("Opss! Aconteceu um erro no seu cadastro, verifique se você preencheu todos espaços necessários")
-        return false
-    }
+    else if (cpfIsValid && inputIsValid) window.alert("Parabéns!! você foi cadastrado com sucesso")
+    return true
 }
-function limpa_formulário_cep() {
-    //Limpa valores do formulário de cep.
+function clearCepInputs() {
     document.getElementById('endereco').value = ("");
     document.getElementById('bairro').value = ("");
     document.getElementById('cidade').value = ("");
     document.getElementById('estado').value = ("");
 }
 
-function meu_callback(conteudo) {
-    if (!("erro" in conteudo)) {
-        //Atualiza os campos com os valores.
-        document.getElementById('endereco').value = (conteudo.logradouro);
-        document.getElementById('bairro').value = (conteudo.bairro);
-        document.getElementById('cidade').value = (conteudo.localidade);
-        document.getElementById('estado').value = (conteudo.uf);
+function retrievingCepInputs(cepInputs) {
+    if ('erro' in cepInputs) {
+        clearCepInputs();
+        alert("CEP não encontrado.");
     }
     else {
-        //CEP não Encontrado.
-        limpa_formulário_cep();
-        alert("CEP não encontrado.");
+        document.getElementById('endereco').value = (cepInputs.logradouro);
+        document.getElementById('bairro').value = (cepInputs.bairro);
+        document.getElementById('cidade').value = (cepInputs.localidade);
+        document.getElementById('estado').value = (cepInputs.uf);
     }
 }
 
-function pesquisacep(valor) {
+function searchCep(valor) {
 
-    //Nova variável "cep" somente com dígitos.
-    var cep = valor.replace(/\D/g, '');
+    const cep = valor.replace(/\D/g, '');
 
-    //Verifica se campo cep possui valor informado.
-    if (cep != "") {
-
-        //Expressão regular para validar o CEP.
-        var validacep = /^[0-9]{8}$/;
-
-        //Valida o formato do CEP.
-        if (validacep.test(cep)) {
-            //Cria um elemento javascript.
-            var script = document.createElement('script');
-
-            //Sincroniza com o callback.
-            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
-
-            //Insere script no documento e carrega o conteúdo.
+    if (cep === "") clearCepInputs();
+    else {
+        const validateCep = /^[0-9]{8}$/;
+        if (validateCep.test(cep)) {
+            let script = document.createElement('script');
+            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=retrievingCepInputs';
             document.body.appendChild(script);
 
-        } //end if.
-        else {
-            //cep é inválido.
-            limpa_formulário_cep();
+        } else {
+            clearCepInputs();
             alert("Formato de CEP inválido.");
         }
-    } //end if.
-    else {
-        //cep sem valor, limpa formulário.
-        limpa_formulário_cep();
     }
 };
-document.addEventListener('DOMContentLoaded', () => {
-    for (const el of document.querySelectorAll("[placeholder][data-slots]")) {
-        const pattern = el.getAttribute("placeholder"),
-            slots = new Set(el.dataset.slots || "_"),
-            prev = (j => Array.from(pattern, (c,i) => slots.has(c)? j=i+1: j))(0),
-            first = [...pattern].findIndex(c => slots.has(c)),
-            accept = new RegExp(el.dataset.accept || "\\d", "g"),
-            clean = input => {
-                input = input.match(accept) || [];
-                return Array.from(pattern, c =>
-                    input[0] === c || slots.has(c) ? input.shift() || c : c
-                );
-            },
-            format = () => {
-                const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
-                    i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
-                    return i<0? prev[prev.length-1]: back? prev[i-1] || first: i;
-                });
-                el.value = clean(el.value).join``;
-                el.setSelectionRange(i, j);
-                back = false;
-            };
-        let back = false;
-        el.addEventListener("keydown", (e) => back = e.key === "Backspace");
-        el.addEventListener("input", format);
-        el.addEventListener("focus", format);
-        el.addEventListener("blur", () => el.value === pattern && (el.value=""));
+function cpfMask() {
+    let i = document.getElementById("cpf").value.length;
+    if (i === 3 || i === 7)
+        document.getElementById("cpf").value = document.getElementById("cpf").value + ".";
+    else if (i === 11)
+        document.getElementById("cpf").value = document.getElementById("cpf").value + "-";
+    else if (i===14) i = 0
     }
-});
+
+function phoneMask() {
+    let i = document.getElementById('celular').value.length;
+    switch (i) {
+        case 0:
+            document.getElementById('celular').value = '('
+            break
+        case 3:
+            document.getElementById('celular').value += ')'
+            break
+        case 5:
+            document.getElementById('celular').value += ' ';
+            break
+        case 10:
+            document.getElementById('celular').value += '-'
+            break
+        case 15:
+            i = 0
+            break
+    }
+}
+

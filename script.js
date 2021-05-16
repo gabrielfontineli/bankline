@@ -57,13 +57,13 @@ function validacao() {
 
         return true
     } else if (!validarCpf(cpf)) {
-        window.alert("Opss! Aconteceu um erro no seu cadastro, verifique se você preencheu todos espacos necessários")
+        window.alert("Opss! Aconteceu um erro no seu cadastro, verifique se você preencheu todos espaços necessários")
         validInputs[1].style["border"] = "1px solid red"
         document.querySelector("span").style["display"] = "inline"
         return false
     }
     else {
-        window.alert("Opss! Aconteceu um erro no seu cadastro, verifique se você preencheu todos espacos necessários")
+        window.alert("Opss! Aconteceu um erro no seu cadastro, verifique se você preencheu todos espaços necessários")
         return false
     }
 }

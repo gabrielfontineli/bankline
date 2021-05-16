@@ -32,7 +32,7 @@ const validarCpf = (cpf) => {
 function validacao() {
 
 
-    var cpf = document.getElementById("cpf").value
+    var cpf = document.getElementById("cpf").value.replace(/[^a-z0-9 ]/g, "")
     var validInputs = document.querySelectorAll(".required")
     var resultadoValidacao = validarCpf(cpf)
     for (i = 0; i < validInputs.length; i++) {

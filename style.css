@@ -118,4 +118,7 @@ select:focus{
     input,select{
         width: 100%;
     }
+    .container{
+        width: 85%;
+    }
 }

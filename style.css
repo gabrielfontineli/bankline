@@ -62,7 +62,9 @@ input, select {
     -moz-appearance: none;
     appearance: none;
 }
-
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #f1f1f1 inset;
+}
 .container {
     background-color:white;
     width: 65%;

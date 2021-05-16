@@ -31,7 +31,10 @@ header p {
     
     font-size: 34px;
 }
-
+h1{
+    text-align: center;
+    padding-top:15px;
+}
 form {
     margin: auto;
     display: flex;

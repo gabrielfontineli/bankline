@@ -53,17 +53,17 @@ function validacao() {
 
     if (resultadoValidacao && validarCpf(cpf)) {
 
-        window.alert("Parabens!! voce foi cadastrado com sucesso");
+        window.alert("Parabéns!! você foi cadastrado com sucesso");
 
         return true
     } else if (!validarCpf(cpf)) {
-        window.alert("Opss! Aconteceu um erro no seu cadastro, verifique se voce preencheu todos espacos necessarios")
+        window.alert("Opss! Aconteceu um erro no seu cadastro, verifique se você preencheu todos espacos necessários")
         validInputs[1].style["border"] = "1px solid red"
         document.querySelector("span").style["display"] = "inline"
         return false
     }
     else {
-        window.alert("Opss! Aconteceu um erro no seu cadastro, verifique se voce preencheu todos espacos necessarios")
+        window.alert("Opss! Aconteceu um erro no seu cadastro, verifique se você preencheu todos espacos necessários")
         return false
     }
 }

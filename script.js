@@ -70,8 +70,7 @@ function retrievingCepInputs(cepInputs) {
     if ('erro' in cepInputs) {
         clearCepInputs();
         alert("CEP não encontrado.");
-    }
-    else {
+    }else {
         document.getElementById('endereco').value = (cepInputs.logradouro);
         document.getElementById('bairro').value = (cepInputs.bairro);
         document.getElementById('cidade').value = (cepInputs.localidade);
@@ -97,6 +96,7 @@ function searchCep(valor) {
         }
     }
 };
+
 function cpfMask() {
     let i = document.getElementById("cpf").value.length;
     if (i === 3 || i === 7)

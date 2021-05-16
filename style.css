@@ -110,3 +110,12 @@ select:focus{
     overflow:hidden;
 }
 [data-slots] { font-family: 'signika', sans-serif }
+
+@media only screen and (max-width: 700px) {
+    table, thead, tbody, th, td, tr { 
+        display: block;
+    }
+    input,select{
+        width: 100%;
+    }
+}

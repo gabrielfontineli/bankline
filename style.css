@@ -83,8 +83,8 @@ button {
 
 span {
     display: none;
-    position: absolute;
-    margin-left: 167px;
+    position: relative;
+    
     color: red;
 }
 
@@ -109,3 +109,4 @@ select:focus{
     border: 0;
     overflow:hidden;
 }
+[data-slots] { font-family: 'signika', sans-serif }

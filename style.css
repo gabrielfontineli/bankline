@@ -32,31 +32,24 @@ header p {
     font-size: 34px;
 }
 h1{
+    margin-top: 70px;
     text-align: center;
     padding-top:15px;
+    font-size: 40px;
 }
-form {
+.wrapper {
     margin: auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     padding: 15px 0;
-}
-
-table {
     width: 90%;
-}
-
-tr:nth-of-type(1) input:nth-of-type(1) {
-    width: 100%;
-}
-
-.w100 {
-    width: 100%;
 }
 
 input, select {
     border: 0px solid black;
-    width: 95%;
+    width: 100%;
     display: inline-block;
     padding: 15px;
     background-color: #f1f1f1;
@@ -74,16 +67,28 @@ input:-webkit-autofill {
     height: 55%;
     margin: 4.4rem auto;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.name{
+    flex:1 1 100%;
+}
+div{
+    flex: 1 1 30%;
+    margin:5px;
 }
 
 button {
     background-color: #ff6737;
     color: white;
-    padding: 15.5px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
     border: none;
     cursor: pointer;
     width: 100%;
-    margin-top: 3px;
 }
 
 span {
@@ -117,7 +122,7 @@ select:focus{
 [data-slots] { font-family: 'signika', sans-serif }
 
 @media only screen and (max-width: 700px) {
-    table, thead, tbody, th, td, tr { 
+    .wrapper { 
         display: block;
     }
     input,select{

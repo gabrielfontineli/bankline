@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Bankline</title>
 
-    <link href="crop_square.svg"rel="shortcut icon" type="image/x-icon">
+    <link href="crop_square.svg" rel="shortcut icon" type="image/x-icon">
 </head>
 
 <body>
@@ -18,76 +18,67 @@
     </header>
     <div class="container">
         <h1> Formulário de cadastro </h1>
-        <form>
-            <table>
-                <tr>
-                    <td colspan="3"> 
-                        <label for="name"><b>Nome</b></label>
-                        <input type="nome" placeholder="Digite seu nome" name="nome"  class="required">
-                    </td>
-                </tr>
-                <tr>
-                    <td> 
-                        <label for="cpf"><b>CPF</b> <span>inválido</span></label>
-                        <input onkeydown="cpfMask()"maxlength="14"type="text" placeholder="Digite seu cpf"  id="cpf" class="required">
-                    </td>
-                    <td>
-                        <label for="rg"><b>RG</b></label>
-                        <input type="nome" placeholder="Digite seu RG" name="rg">
-                    </td>
-                    <td>
-                        <label for="sexo"><b>Sexo</b></label>
-                        <select id="sexo" class="w100">
-                            <option selected>Escolha seu sexo</option>
-                            <option value="feminino">Feminino</option>
-                            <option value="masculino">Masculino</option>
-                            <option value="outro">Outro</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="cep"><b>CEP</b></label>
-                        <input type="text" placeholder="Digite seu CEP" name="cep" onblur="searchCep(this.value)">
-                    </td>
-                    <td>
-                        <label for="endereco"><b>Endereço</b></label>
-                        <input type="text" placeholder="Digite seu endereço" name="endereco" class="required"  id="endereco">
-                    </td>
-                    <td>
-                        <label for="numero"><b>Número</b></label>
-                        <input type="text" placeholder="Digite o número" name="numero" class="required w100" >
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="bairro"><b>Bairro</b></label>
-                        <input type="nome" placeholder="Digite seu bairro" name="bairro" id="bairro">
-                    </td>
-                    <td>
-                        <label for="cidade"><b>Cidade</b></label>
-                        <input type="nome" placeholder="Digite sua cidade" name="cidade" id="cidade">
-                    </td>
-                    <td>
-                        <label for="estado"><b>Estado</b></label>
-                        <input type="text" placeholder="Digite seu estado" name="estado" id="estado" class="w100">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="fixo"><b>Telefone fixo</b></label>
-                        <input type="text" placeholder="Digite o número do seu fixo" name="fixo">
-                    </td>
-                    <td>    
-                        <label for="celular"><b>Telefone celular</b></label>
-                        <input onkeydown="phoneMask()"type="text" placeholder="Digite número do celular" maxlength="15" id="celular" class="required" >
-                    </td>
-                    <td> 
-                        <button onclick="return validate()" type="submit" class="signupbtn">Cadastre-se</button> 
-                    </td>
-                </tr>
-            </table>
-        </form>
+
+        <section class ="wrapper">
+            <div class ="name">
+                <label for="name"><b>Nome</b></label>
+                <input type="nome" placeholder="Digite seu nome" name="nome" class="required">
+            </div>
+            <div>
+                <label for="cpf"><b>CPF</b> <span>inválido</span></label>
+                <input onkeydown="cpfMask()" maxlength="14" type="text" placeholder="Digite seu cpf" id="cpf"class="required">
+            </div>
+            <div>
+                <label for="rg"><b>RG</b></label>
+                <input type="nome" placeholder="Digite seu RG" name="rg">
+            </div>
+            <div>
+                <label for="sexo"><b>Sexo</b></label>
+                <select id="sexo" class="w100">
+                    <option selected>Escolha seu sexo</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+            <div>
+                <label for="cep"><b>CEP</b></label>
+                <input type="text" placeholder="Digite seu CEP" name="cep" onblur="searchCep(this.value)">
+            </div>
+            <div>
+                <label for="endereco"><b>Endereço</b></label>
+                <input type="text" placeholder="Digite seu endereço" name="endereco" class="required" id="endereco">
+            </div>
+            <div>
+                <label for="numero"><b>Número</b></label>
+                <input type="text" placeholder="Digite o número" name="numero" class="required w100">
+            </div>
+            <div>
+                <label for="bairro"><b>Bairro</b></label>
+                <input type="nome" placeholder="Digite seu bairro" name="bairro" id="bairro">
+            </div>
+            <div>
+                <label for="cidade"><b>Cidade</b></label>
+                <input type="nome" placeholder="Digite sua cidade" name="cidade" id="cidade">
+            </div>
+            <div>
+                <label for="estado"><b>Estado</b></label>
+                <input type="text" placeholder="Digite seu estado" name="estado" id="estado" class="w100">
+            </div>
+            <div>
+                <label for="fixo"><b>Telefone fixo</b></label>
+                <input type="text" placeholder="Digite o número do seu fixo" name="fixo">
+            </div>
+            <div>
+                <label for="celular"><b>Telefone celular</b></label>
+                <input onkeydown="phoneMask()" type="text" placeholder="Digite número do celular" maxlength="15"id="celular" class="required">
+            </div>
+            <div>
+                <button onclick="return validate()" type="submit" class="signupbtn">Enviar</button>
+
+            </div>
+
+        </section>
     </div>
     <footer>
         <p>Direitos reservados a Gabriel Fontineli</p>

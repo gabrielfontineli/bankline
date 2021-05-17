@@ -17,7 +17,6 @@ var formulario = {};
     formulario.celular = document.getElementById('celular');
     formulario.required = document.querySelectorAll(".required");
     formulario.invalidElement = document.querySelector("span");
-	console.log(formulario);
 })(formulario);
 
 function validatecpf(cpf) {
